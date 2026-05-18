@@ -1,0 +1,11 @@
+public class Validador {
+    public static int obterOpcaoValida(String entrada) {
+        try {
+            return Integer.parseInt(entrada);
+        } catch (NumberFormatException e) {
+            return -1; // Retorna um código de erro genérico
+        }
+    }
+}public class Validador {
+
+}

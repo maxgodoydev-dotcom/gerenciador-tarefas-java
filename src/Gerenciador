@@ -1,0 +1,32 @@
+import java.util.List;
+
+public class Gerenciador {
+    private List<Tarefa> tarefas;
+    private ArquivoServico arquivoServico;
+
+    public Gerenciador() {
+        this.arquivoServico = new ArquivoServico();
+        this.tarefas = arquivoServico.carregar();
+    }
+
+    public List<Tarefa> getTarefas() { return tarefas; }
+
+    public void adicionarTarefa(String descricao) {
+        tarefas.add(new Tarefa(descricao));
+        arquivoServico.salvar(tarefas);
+    }
+
+    public void concluirTarefa(int indice) {
+        tarefas.get(indice).concluir();
+        arquivoServico.salvar(tarefas);
+    }
+
+    public void removerTarefa(int indice) {
+        tarefas.remove(indice);
+        arquivoServico.salvar(tarefas);
+    }
+
+    public boolean isIndiceValido(int indice) {
+        return indice >= 0 && indice < tarefas.size();
+    }
+}
